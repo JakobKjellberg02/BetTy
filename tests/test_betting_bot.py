@@ -8,6 +8,7 @@ class BettingBotTests(unittest.TestCase):
     def test_negative_starting_balance_raises(self):
         with self.assertRaisesRegex(ValueError, "Starting balance cannot be negative"):
             BettingBot(-1)
+
     def test_win_updates_balance_and_profit(self):
         bot = BettingBot(100)
         result = bot.place_bet(stake=10, odds=2.5, won=True)
