@@ -39,12 +39,14 @@ class BettingBot:
             profit = -stake
             outcome = "lose"
 
+        self.balance = round(self.balance, 2)
+
         return BetResult(
             outcome=outcome,
             stake=stake,
             odds=odds,
             profit=round(profit, 2),
-            new_balance=round(self.balance, 2),
+            new_balance=self.balance,
         )
 
 
