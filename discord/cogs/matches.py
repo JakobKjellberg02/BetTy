@@ -1,4 +1,5 @@
 import discord
+from util.scraper import getMatchesForToday
 from discord.ext import commands
 
 class Matches(commands.Cog):
@@ -11,12 +12,9 @@ class Matches(commands.Cog):
             title="🎾 Tennis Matches",
             color=discord.Color.green()
         )
-        matches = [
-            ("Sinner vs Alcaraz", "1,20 - 1,23"),
-            ("Kjellberg vs Bothmann", "1,01 - 10,00")
-        ]
-        for match, odds in matches:
-            embed.add_field(name=match, value=f'Odds: {odds}', inline=False)
+        matches = getMatchesForToday()
+        for match in matches:
+            embed.add_field(name=match, value=f'Odds: ?', inline=False)
         await ctx.send(embed=embed)
 
 async def setup(bot):
